@@ -1,10 +1,12 @@
-import { Fragment } from "react"
+import {} from "react"
+import {} from "react-router-dom"
+import style from "./App.module.scss"
 import Home from "pages/Home"
 
 export function App() {
 	return (
-		<Fragment>
+		<main className={style.content}>
 			<Home />
-		</Fragment>
+		</main>
 	)
 }
