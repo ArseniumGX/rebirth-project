@@ -1,3 +1,10 @@
+import { Fragment } from "react"
+import Home from "pages/Home"
+
 export function App() {
-	return <h1>Olá!</h1>
+	return (
+		<Fragment>
+			<Home />
+		</Fragment>
+	)
 }
