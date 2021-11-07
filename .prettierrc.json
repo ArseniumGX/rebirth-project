@@ -3,9 +3,8 @@
     "useTabs": true,
     "tabWidth": 3,
     "semi": false,
+    "trailingComma": "none",
     "jsxSingleQuote": true,
     "bracketSpacing": true,
-    "bracketSameLine": false,
-    "arrowParens": "always",
     "endOfLine": "lf"
 }
