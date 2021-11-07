@@ -5,11 +5,14 @@
 */
 
 export default {
-    "baseURL": "https://rickandmortyapi.com/api",
-    "list": function(){ 
+    baseURL: "https://rickandmortyapi.com/api",
+    listCharacter: function(){ 
         return fetch(this.baseURL + '/character')
     },
-    "getOne": function(id){
+    getChar: function(id){
         return fetch(`${this.baseURL}/character/${id}`)
+    },
+    getEpisode: function(id){
+        return fetch(`${this.baseURL}/episode/${id}`)
     }
 }
