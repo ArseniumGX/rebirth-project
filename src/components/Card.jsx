@@ -16,7 +16,9 @@ export default function Card({ char }) {
 					<strong>{char.name}</strong>
 				</p>
 			</div>
-			<Link to={`/view/${char.id}`}>Ver</Link>
+			<div className={style.btnView}>
+				<Link to={`/view/${char.id}`}>Ver</Link>
+			</div>
 		</div>
 	)
 }

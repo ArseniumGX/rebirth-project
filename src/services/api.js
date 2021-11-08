@@ -6,8 +6,8 @@
 
 export default {
     baseURL: "https://rickandmortyapi.com/api",
-    listCharacter: function(){ 
-        return fetch(this.baseURL + '/character')
+    listCharacter: function(page){ 
+        return fetch(`${this.baseURL}/character?page=${page}`)
     },
     getChar: function(id){
         return fetch(`${this.baseURL}/character/${id}`)

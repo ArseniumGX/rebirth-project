@@ -1,72 +1,49 @@
 import { useState, useEffect } from "react"
 import { Link, useParams } from "react-router-dom"
 import Api from "../services/api"
+import style from "../styles/View.module.scss"
 
 function View() {
-	const { id } = useParams()
-
-	// Construção da estrutura esperada em list para não fica reclamado la em
-	// baixo que as propriedades não existem
+	const params = useParams()
 	const [info, setInfo] = useState({
-		id: 0,
-		name: "",
-		image: "",
-		episode: []
+		id: null,
+		name: null,
+		image: null,
+		episode: [] | null
 	})
 
-	const [load, setLoad] = useState(false)
+	const getCharInfo = async () => {
+		const response = await Api.getChar(params.id)
+		let { id, name, image, episode } = await response.json()
 
-	const getNameEpisode = async (...id) => {
-		const response = await Api.getEpisode(id)
-		const { results } = await response.json()
+		episode.forEach((element, pos) => {
+			episode[pos] = +element.replace(
+				"https://rickandmortyapi.com/api/episode/",
+				""
+			)
+		})
+		await getEpisodeNames(episode).then(res => (episode = res))
 
-		const name = { results }
+		return { id, name, image, episode }
+	}
 
-		if (!name) return
+	const getEpisodeNames = async arr => {
+		const response = await Api.getEpisode(arr)
+		const result = await response.json()
 
-		setInfo({ ...info, episode: name })
+		return result
 	}
 
 	useEffect(() => {
-		setInfo(async () => {
-			const response = await Api.getChar(id)
-			const result = await response.json()
-
-			info.id = result.id
-			info.name = result.name
-			info.image = result.image
-			info.episode = result.episode
-			console.log(result)
-
-			// info = {
-			// 	id: result.id,
-			// 	name: result.name,
-			// 	image: result.image,
-			// 	episode: result.episode
-			// }
-		})
-		setLoad(true)
+		getCharInfo().then(res => setInfo(res))
 	}, [])
 
-	// useEffect(() => {
-	// 	info.episode.forEach((element, pos) => {
-	// 		if (!info.episode) return
-
-	// 		info.episode[pos] = +element.replace(
-	// 			"https://rickandmortyapi.com/api/episode/",
-	// 			""
-	// 		)
-	// 	})
-	// 	// console.log(info.episode)
-	// 	getNameEpisode(info.episode)
-	// }, [load])
-
 	return (
-		<section className='viewContent'>
-			<div className='btnVoltar'>
-				<Link to={`/#${info.id}`}>Voltar</Link>
+		<section className={style.viewContent}>
+			<div className={style.btnVoltar}>
+				<Link to={`/`}>Voltar</Link>
 			</div>
-			<div className='viewImage'>
+			<div className={style.viewImage}>
 				<img src={info.image} alt={`${info.name} image`} />
 			</div>
 			<span>
@@ -74,9 +51,15 @@ function View() {
 			</span>
 			<h4>Aparições</h4>
 			<ul>
-				{/* {info.episode.map(async (ep, pos) => {
-					return <li key={pos}>{ep}</li>
-				})} */}
+				{Array.isArray(info.episode) ? (
+					info.episode.map((ep, pos) => (
+						<li key={pos}>{`${ep.episode} - ${ep.name}`}</li>
+					))
+				) : (
+					<li
+						key={info.episode.id}
+					>{`${info.episode.episode} - ${info.episode.name}`}</li>
+				)}
 			</ul>
 		</section>
 	)

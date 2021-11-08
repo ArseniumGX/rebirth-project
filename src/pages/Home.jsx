@@ -1,7 +1,14 @@
-import List from "../components/List"
+import { List } from "../components/List"
+import { QueryClient, QueryClientProvider } from "react-query"
+
+const queryClient = new QueryClient()
 
 function Home() {
-	return <List />
+	return (
+		<QueryClientProvider client={queryClient}>
+			<List />
+		</QueryClientProvider>
+	)
 }
 
 export { Home }
