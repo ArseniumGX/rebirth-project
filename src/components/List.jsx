@@ -4,8 +4,19 @@ import Api from "../services/api"
 import { useIntersectionObserver } from "../hook/charIntersectionObserver"
 import Card from "../components/Card"
 import style from "../styles/List.module.scss"
+import { useState } from "react/cjs/react.development"
 
 function List() {
+	const [gender, setGender] = useState("Female")
+	const handleGender = () =>
+		gender === "Female"
+			? setGender("Male")
+			: gender === "Male"
+			? setGender("Genderless")
+			: gender === "Genderless"
+			? setGender("unknown")
+			: setGender("Female")
+
 	const loadMoreButtonRef = useRef()
 
 	const loadCharacters = async ({ pageParam = 0 }) => {
@@ -44,16 +55,23 @@ function List() {
 	) : (
 		<>
 			<section className={style.cardSection}>
+				<button onClick={handleGender}>Genero {gender}</button>
 				{data.pages.map((group, i) => (
 					<Fragment key={i}>
-						{group.results.map(char => (
+						{group.results
+							.filter(char => char.gender === gender)
+							.map(char => (
+								<Card char={char} key={char.id} />
+							))}
+						{/* {group.results.map(char => (
 							<Card char={char} key={char.id} />
-						))}
+						))} */}
 					</Fragment>
 				))}
 			</section>
 			<div className={style.btnLoad}>
 				<button
+					ref={loadMoreButtonRef}
 					onClick={() => fetchNextPage()}
 					disabled={!hasNextPage || isFetchingNextPage}
 				>

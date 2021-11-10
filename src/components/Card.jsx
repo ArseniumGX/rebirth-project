@@ -11,6 +11,9 @@ export default function Card({ char }) {
 			<div className={style.charStatus}>
 				<p>{char.status}</p>
 			</div>
+			<div>
+				<p>{char.gender}</p>
+			</div>
 			<div className={style.charName}>
 				<p>
 					<strong>{char.name}</strong>
