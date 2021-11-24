@@ -1,0 +1,62 @@
+div.card {
+	width: 22rem;
+	height: 24rem;
+	margin: 1rem;
+	padding: 2rem;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-evenly;
+	text-align: center;
+	border: solid 2px #323432;
+	box-shadow: 0.1rem 0.1rem 0.1rem #000;
+
+	.charImage {
+		height: 17rem;
+		width: 17rem;
+		border: solid 2px #44281d;
+		box-shadow: 0 0 0.5rem #f0e14a;
+		padding: 0.12rem;
+		border-radius: 50%;
+		transition: 0.3s ease all;
+
+		&:hover {
+			transform: scale(1.1);
+		}
+
+		img {
+			border-radius: 50%;
+			height: 16.5rem;
+			width: 16.5rem;
+		}
+	}
+	.charStatus {
+		font-size: 1.5rem;
+		font-weight: 700;
+		letter-spacing: 0.3rem;
+	}
+
+	.charName {
+		letter-spacing: 0.1rem;
+	}
+
+	.btnView {
+		height: 2rem;
+		width: 4rem;
+		border-radius: 8px;
+		color: #fffcf2;
+		background-color: #643173;
+		transition: 0.3s ease all;
+		margin: 0.5rem;
+
+		&:hover {
+			background-color: #334139;
+			box-shadow: 0 0 0.5rem #643173;
+		}
+
+		a {
+			text-decoration: none;
+			color: #fffcf2;
+		}
+	}
+}

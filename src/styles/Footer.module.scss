@@ -1,0 +1,65 @@
+footer {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-around;
+	background-color: #0d0d0d;
+	width: 100%;
+	height: 20vh;
+
+	img {
+		width: 12rem;
+	}
+
+	div.socials {
+		width: 18rem;
+		ul {
+			display: flex;
+			flex-flow: row wrap;
+			list-style: none;
+			align-items: center;
+			justify-content: space-between;
+
+			li {
+				a {
+					svg {
+						width: 2rem;
+						transition: 0.3s ease;
+
+						&.linkedin:hover {
+							fill: #0a66c2;
+							transform: scale(1.5);
+						}
+
+						&.github:hover {
+							fill: #f0f6fc;
+							transform: scale(1.5);
+						}
+
+						&.facebook:hover {
+							fill: #1877f2;
+							transform: scale(1.5);
+						}
+
+						&.twitter:hover {
+							fill: #1da1f2;
+							transform: scale(1.5);
+						}
+					}
+				}
+			}
+		}
+	}
+
+	div.copy {
+		width: 90vw;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		p {
+			color: #fffcf2;
+			letter-spacing: 0.2rem;
+			text-align: center;
+		}
+	}
+}

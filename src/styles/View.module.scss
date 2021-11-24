@@ -1,0 +1,67 @@
+section.viewContent {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+
+	.btnVoltar {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		height: 2rem;
+		width: 6rem;
+		border-radius: 8px;
+		background-color: #643173;
+		transition: 0.3s ease all;
+		margin: 0.5rem;
+
+		&:hover {
+			background-color: #334139;
+			box-shadow: 0 0 0.5rem #643173;
+		}
+
+		a {
+			text-decoration: none;
+			color: #fffcf2;
+		}
+	}
+
+	.viewImage {
+		border: solid 2px #44281d;
+		height: 305px;
+		width: 305px;
+		border-radius: 4px;
+
+		img {
+			height: 301px;
+			width: 301px;
+		}
+	}
+
+	span {
+		padding: 0.5rem;
+
+		p {
+			letter-spacing: 0.2rem;
+			text-align: center;
+			font-weight: 600;
+		}
+	}
+
+	h4 {
+		font-size: 2em;
+		text-transform: uppercase;
+	}
+
+	ul {
+		list-style: none;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+
+		li {
+			letter-spacing: 0.1rem;
+			margin-bottom: 0.1rem;
+		}
+	}
+}
